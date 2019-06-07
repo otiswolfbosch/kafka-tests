@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: python
+spec:
+  ports:
+  - port: 5000
+  type: LoadBalancer
+  selector:
+    app: python
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python
+spec:
+  selector:
+    matchLabels:
+      app: python
+  template:
+    metadata:
+      labels:
+        app: python
+    spec:
+      imagePullSecrets:
+        - name: bh-registry
+      containers:
+      - name: python
+        image: bluehoundregistry.azurecr.io/bluehound/kafka-test #gcr.io/k8s-skaffold/python-reload 
+        ports:
+        - containerPort: 5000

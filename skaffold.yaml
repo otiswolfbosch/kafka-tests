@@ -1,0 +1,18 @@
+apiVersion: skaffold/v1beta11
+kind: Config
+build:
+  artifacts:
+  # - image: gcr.io/k8s-skaffold/node-example
+  #   context: node
+  #   sync:
+  #     manual:
+  #     - src: 'src/**/*.js'
+  #       dest: .
+  #       strip: src/
+  - image: bluehoundregistry.azurecr.io/bluehound/kafka-test #gcr.io/k8s-skaffold/python-reload 
+    context: python
+    sync:
+      manual:
+      - src: 'src/**/*.py'
+        dest: .
+        strip: src/
