@@ -11,8 +11,12 @@ build:
   #       strip: src/
   - image: bluehoundregistry.azurecr.io/bluehound/kafka-test #gcr.io/k8s-skaffold/python-reload 
     context: python
-    sync:
-      manual:
-      - src: 'src/**/*.py'
-        dest: .
-        strip: src/
+    # sync:
+    #   manual:
+    #   - src: 'src/**/*.py'
+    #     dest: .
+    #     strip: src/
+deploy:
+  kubectl:
+    manifests:
+      - k8s-*
