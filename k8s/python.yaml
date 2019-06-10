@@ -25,9 +25,9 @@ spec:
         app: python
     spec:
       imagePullSecrets:
-        - name: bh-registry
+        - name: bh-dev-registry
       containers:
       - name: python
-        image: bluehoundregistry.azurecr.io/bluehound/kafka-test #gcr.io/k8s-skaffold/python-reload 
+        image: bluehounddev.azurecr.io/bluehound/kafka-test #gcr.io/k8s-skaffold/python-reload 
         ports:
         - containerPort: 5000
